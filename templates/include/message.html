@@ -1,0 +1,16 @@
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'error' %}
+    <p id="message-time" class="alert alert-danger text-center h5">{{message}}</p>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'success' %}
+    <p id="message-time" class="alert alert-success text-center h5">{{message}}</p>
+{% endif %}
+{% endfor %}
+{% endif %}

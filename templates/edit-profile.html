@@ -1,0 +1,22 @@
+{% extends 'bas.html' %}
+{% block title  %} Edit Profile | KINGDAVIS {% endblock %}
+{% block content %}
+
+<form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container">
+    <h1>Edit Profile</h1>
+    <p>Please fill in this form to edit your account.</p>
+    <hr>
+    
+      {% include 'include/message.html' %}
+      {% for i in form %}
+      <label for="name"><b>{{i.label}}</b></label>
+        {{i}}
+      {% endfor %}
+      <hr>
+      <button type="submit" class="registerbtn">Submit</button>
+    </div>
+  </form>
+
+{% endblock %}

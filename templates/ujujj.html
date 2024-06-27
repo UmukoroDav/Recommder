@@ -1,0 +1,41 @@
+<!-- 
+<section class="section" id="our-classes">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Read our <em>Blog</em></h2><br>
+                    <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="tabs">
+            <div class="col-lg-4">
+            <ul>
+                {% for i in blo %}
+              <li><a href='#tabs-1'>{{i.user.description}}.</a></li>
+              <li><a href='#tabs-2'>{{i.user.description}}.</a></li>
+              <li><a href='#tabs-3'>{{i.user.description}}.</a></li>
+              <div class="main-rounded-button"><a href="{% url 'blog' %}">Read More</a></div>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="col-lg-8">
+              <section class='tabs-content'>
+                  <article id='tabs-1'>
+                <img src="{{i.pics.url}}" alt="">
+                <h4>{{i.country_namw}}</h4>
+
+                <p><i class="fa fa-user"></i> {{i.user.name}} &nbsp;|&nbsp; <i class="fa fa-calendar"></i> {{i.created_on}} &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
+
+                <p>{{i.description}}.</p>
+                <div class="main-button">
+                    <a href="{% url 'blogdetails' blo.user.id %}">Continue Reading</a>
+                </div>
+            </article>
+        </section>
+    </div>
+</div>
+    </div>
+</section> -->

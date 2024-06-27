@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title  %} Blog | KINGDAVIS {% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+
+    <section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <br>
+                        <br>
+                        <h2>Read our <em>Blog</em></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="our-classes">
+        <div class="container">
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-8">
+                    <section class='tabs-content'>
+                        {% for i in blog %}
+                      <article>
+                        <img src="{{i.pics.url}}" alt="">
+                        <h4>{{ i.country_namw }}</h4>
+                        <p><i class="fa fa-user"></i> {{ i.user.username }} &nbsp;|&nbsp; <i class="fa fa-calendar"></i> {{ i.created }}</p>
+                        <p>{{ i.description }}</p>
+                        <div class="main-button">
+                            <a href="{% url 'blogdetails' i.id %}" class="text-white">Continue Reading</a>
+                        </div>
+                      </article>
+                      <br>
+                      <br>
+                      {% endfor %}
+                      
+                    </section>
+                </div>
+
+                <div class="col-lg-4">
+                    <h5 class="h5">Search</h5>
+                    
+                    <div class="contact-form">
+                        <form id="search_form" name="gs" method="GET" action="#">
+                          <input type="text" name="q" class="searchText w-75" placeholder="type to search..." autocomplete="on">
+                          <button type="submit" class="btn btn-sm btn-info">Search</button>
+                        </form>
+                    </div>
+                    <h5 class="h5">Recent posts</h5>
+                    {% for i in bl %}
+                    <ul>
+                        <li>
+                            <p><a href="{% url 'blogdetails' i.id %}">{{i.description}}</a></p>
+                            <small><i class="fa fa-user"></i> {{i.user.username}} &nbsp;|&nbsp; <i class="fa fa-calendar"></i> {{i.created}} </small>
+                        </li>
+
+                        <li><br></li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block title  %} Blog Details | KINGDAVIS {% endblock %}
+{% load static %}
+
+{% block content %}
+
+    <section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <br>
+                        <br>
+                        <h2>Single <em>blog post</em></h2>
+                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="our-classes">
+        <div class="container">
+            <br>
+            <br>
+            <section class='tabs-content'>
+              <article>
+                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
+
+                <p><i class="fa fa-user"></i> {{blo.user.username}} &nbsp;|&nbsp; <i class="fa fa-calendar"></i> {{blo.created}} &nbsp;|&nbsp; <i class="fa fa-comments"></i>  {{comment_count}} comments</p>
+
+                <div><img src="{{blo.pics.url}}" alt="" class="w-100"></div>
+                <h4 style="text-transform: uppercase;">{{blo.country_namw}}</h4>
+
+                <p>{{blo.description}}.</p>
+
+                <ul class="social-icons">
+                    <li>Share this:</li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                </ul>
+              </article>
+            </section>
+
+            <br>
+            <br>
+            <br>
+            
+            <section class='tabs-content'>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4>Comments</h4>
+                        <ul class="features-items">
+                            <li>
+                              {% for i in comments %}
+                                <div class="feature-item" style="margin-bottom:15px;">
+                                    <div class="left-icon">
+                                        <img src="{{i.user.profile.url}}" alt="First One" class="avatar-img rounded-circle" style="width: 20%;" height="90px">
+                                    </div>
+                                    <div class="right-content">
+                                        <h4>{{i.user.name}} <small>{{i.created}}</small></h4>
+                                        <p><em>"{{i.message}}"</em></p>
+                                    </div>
+                                  </div>
+                                  {% endfor %}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h4>Leave a comment</h4>
+                
+                        <div class="contact-form">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                {% include 'include/message.html' %}
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <fieldset>
+                                    <input name="name" type="text" id="name" placeholder="Your Name*" required="" readonly>
+                                  </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                  <fieldset>
+                                    <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required="" readonly>
+                                  </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                  <fieldset>
+                                    <textarea name="message" rows="6" id="message" placeholder="Message" required=""></textarea>
+                                  </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                  <fieldset>
+                                    <button type="submit" id="form-submit" class="btn btn-primary main-button">Submit</button>
+                                  </fieldset>
+                                </div>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+{% endblock %}
+

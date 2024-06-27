@@ -1,0 +1,121 @@
+{% load static %}
+{% load active_link_tags %}
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+
+
+  <header class="navbar navbar-expand-xl navbar-light bg-white border-bottom border-xl-0 py-2 py-xl-4">
+    <div class="container-fluid">
+        
+        <!-- Brand -->
+        <a class="navbar-brand me-0" href="{% url 'index' %}">
+            KIKA
+        </a>
+
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse z-index-lg" id="navbarCollapse">
+
+            <!-- Toggler -->
+            <button class="navbar-toggler outline-0 text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Icon -->
+                <svg width="16" height="17" viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.142135 2.00015L1.55635 0.585938L15.6985 14.7281L14.2843 16.1423L0.142135 2.00015Z" fill="currentColor"></path>
+                    <path d="M14.1421 1.0001L15.5563 2.41431L1.41421 16.5564L0 15.1422L14.1421 1.0001Z" fill="currentColor"></path>
+                </svg>
+
+            </button>
+
+            <!-- Navigation -->
+            <ul class="navbar-nav ms-auto" style="display: flex; align-items: centery;">
+                {% if request.user.is_authenticated %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog' %}">
+                      Blog
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">
+                        About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'package' %}">
+                        Packages
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">
+                        Contact
+                    </a>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link" id="navbarBlog" href="#" aria-haspopup="true" aria-expanded="false">
+                    
+                        <div class="avatar avatar-lg" style="margin-top: -20px; display: flex;">
+                            <img src="{{request.user.profile.url}}" alt="..." class="avatar-img rounded-circle">
+                            <!-- <p style="color: #5fa1f2;">{{request.user.name}} <span class="d-block">@{{request.user.username}}</span></p> -->
+                          </div>
+                    </a>
+                    <ul class="dropdown-menu border-xl shadow-none" aria-labelledby="navbarBlog">
+                        <li class="dropdown-item">
+                            <a class="dropdown-link" href="{% url 'edit_profile' %}">
+                                Edit Profile
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="dropdown-link" href="{% url 'logout' %}">
+                             Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {% else %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link" id="navbarBlog" href="{% url 'login' %}" aria-haspopup="true" aria-expanded="false">
+                        <div class="avatar avatar-lg">
+                            <img src="{% static 'image/avatar.svg' %}" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+
+
+
+        <!-- Toggler -->
+        <button class="navbar-toggler ms-4 ms-md-5 shadow-none bg-teal text-white icon-xs p-0 outline-0 h-40p w-40p d-flex d-xl-none place-flex-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Icon -->
+            <svg width="25" height="17" viewBox="0 0 25 17" xmlns="http://www.w3.org/2000/svg">
+                <rect width="25" height="1" fill="currentColor"/>
+                <rect y="8" width="15" height="1" fill="currentColor"/>
+                <rect y="16" width="20" height="1" fill="currentColor"/>
+            </svg>
+
+        </button>
+    </div>
+
+</header>

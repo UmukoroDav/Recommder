@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title  %} Country | KINGDAVIS {% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+
+<section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2>Our <em>Packages</em></h2>
+                </div>
+                <div class="contact-form">
+                    <form id="search_form" name="gs" method="GET" action="#">
+                        <input type="text" name="q" class="form-control w-75" placeholder="type to search..." autocomplete="on">
+                        <button type="submit" class="btn btn-sm btn-info">Search</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section" id="trainers">
+    <div class="container">
+        <br>
+        <br>
+
+        <div class="row">
+            {% for i in post %}
+            <div class="col-lg-4">
+                <div class="trainer-item">
+                    <div class="image-thumb">
+                        <img src="{{i.pics.url}}" alt="">
+                    </div> <br>
+                    <div class="down-content">
+
+                        <h4>{{ i.country_name }}</h4>
+                        
+                        <ul class="social-icons d-flex justify-content-between">
+                            <li><a href="{% url 'packagedetails' i.id %}">+ View Country</a></li>
+                            <p class="dae">{{ i.topic }}</p>
+                        </ul>
+                    </div>
+                </div>
+            </div><br>
+            {% endfor %}
+        </div>
+
+        <br>
+
+
+    </div>
+</section>
+
+<ul class="de">
+    <li><a href="{% url 'package' %}" class="dae">All</a></li>
+</ul>
+
+
+{% endblock %}

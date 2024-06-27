@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block title  %} Home | KINGDAVIS {% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="main-banner" id="top">
+    <video autoplay muted loop id="bg-video">
+        <source src="{% static 'assets/images/video.mp4' %}" type="video/mp4" />
+    </video>
+
+    <div class="video-overlay header-text">
+        <div class="caption">
+            <h6>Lorem ipsum dolor sit amet</h6>
+            <h2><em>Explore</em> the world with us!</h2>
+            <div class="main-button">
+                <a href="{% url 'contact' %}">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="section" id="trainers">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Featured <em>Packages</em></h2><br>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for i in pot %}
+            <div class="col-lg-4">
+                <div class="trainer-item">
+                    <div class="image-thumb">
+                        <img src="{{i.pics.url}}" alt="">
+                    </div> <br>
+                    <div class="down-content">
+
+                        <h4>{{ i.country_name }}</h4>
+
+                        <p>
+                            {{ i.details }}
+                        </p>
+
+                        <ul class="social-icons d-flex justify-content-between">
+                            <li><a href="{% url 'packagedetails' i.id %}">+ View Country</a></li>
+                            <p class="dae">{{ i.topic }}</p>
+                        </ul>
+                    </div>
+                </div>
+            </div><br>
+            {% endfor %}
+        </div>
+
+        <br>
+
+        <div class="main-button text-center">
+            <a href="{% url 'package' %}" class="text-white">View Packages</a>
+        </div>
+    </div>
+</section>
+
+<section class="section section-bg" id="schedule" style="background-image: url(assets/images/about-fullscreen-1-1920x700.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading dark-bg">
+                    <h2>Read <em>About Us</em></h2><br>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                {% for i in about %}
+                <div class="cta-content text-center">
+                    <p>{{i.goal}}.</p>
+
+                    <p>{{i.passion}}!</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="our-classes">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Read our <em>Blog</em></h2><br>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="tabs">
+            <div class="col-lg-4">
+            <ul>
+                {% for i in blo %}
+              <li><a href='#tabs-1'>{{i.description}}.</a></li>
+              <div class="main-rounded-button"><a href="{% url 'blog' %}">Read More</a></div>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="col-lg-8">
+              <section class='tabs-content'>
+                {% for i in blo %}
+                  <article id='tabs-1'>
+                <img src="{{i.pics.url}}" alt="">
+                <h4>{{i.country_namw}}</h4>
+
+                <p><i class="fa fa-user"></i> {{i.user.username}} &nbsp;|&nbsp; <i class="fa fa-calendar"></i> {{i.created}}</p>
+
+                <p>{{i.description}}.</p>
+                <div class="main-button">
+                    <a href="{% url 'blogdetails' i.id %}" class="text-white">Continue Reading</a>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+    </div>
+</div>
+    </div>
+</section>
+
+
+<section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <h2>Send us a <em>message</em></h2>
+                    <p>If you have any questions or inquiries regarding the Tourisim, feel free to reach out to us. We are here to assist you in any way we can.</p>
+                    <div class="main-button">
+                        <a href="{% url 'contact' %}" class="text-white">Contact us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock %}
+
+
